@@ -15,6 +15,11 @@
     height: auto;
 }
 
+.black-star{
+    color: transparent;  
+    text-shadow: 0 0 0 #666;
+}
+
 .Main .card:hover {
     cursor: pointer;
     box-shadow: 5px 5px 15px 0px;
