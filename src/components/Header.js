@@ -1,9 +1,10 @@
 import "./Header.css";
 
-export default function Header() {
+export default function Header({movieCount}) {
     return (
         <header className="Header">
-            <div>this is the HEADER</div>
+            <h1>Popcorn time!</h1>
+            <h2>Number of movies: {movieCount}</h2>
         </header>
     )
 }
