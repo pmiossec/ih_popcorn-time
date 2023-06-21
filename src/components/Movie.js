@@ -1,6 +1,6 @@
-export default function Movie({details, deleteMovie}) {
-    return <div key={details.id} className="card">
-            <p>{details.title}</p>
-                <button onClick={() => deleteMovie(details.id)}>Delete this movie</button>
+export default function Movie({id, title, deleteMovie}) {
+    return <div key={id} className="card">
+                <p>{title}</p>
+                <button onClick={() => deleteMovie(id)}>Delete this movie</button>
             </div>
 }
