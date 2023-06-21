@@ -24,3 +24,8 @@
     cursor: pointer;
     box-shadow: 5px 5px 15px 0px;
 }
+
+.mirror {
+    display: inline-block;
+    transform: scaleX(-1);
+}
