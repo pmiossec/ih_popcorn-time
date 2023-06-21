@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import allMovies from '../data/movies.json'
+import Movie from './Movie';
 import './Main.css';
 
 
@@ -12,10 +13,7 @@ export default function Main() {
 
     return (
         <div className="Main">
-            { movies.map(m => <div key={m.id} className="card">
-            <p>{m.title}</p>
-                <button onClick={() => deleteMovie(m.id)}>Delete this movie</button>
-            </div>)}
+            { movies.map(m => <Movie details={m} deleteMovie={deleteMovie} /> )}
         </div>
     )
 }
