@@ -49,38 +49,39 @@ function App() {
       <Header movieCount={movies.length} />
 
       {/* https://m.media-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg */}
+      <section>
+        <form onSubmit={handleFormSubmit}>
 
-      <form onSubmit={handleFormSubmit}>
+          <label>
+            Title:
+            <input type="text" name="title" placeholder='Enter movie title...'
+            value={title} onChange={e => setTitle(e.target.value)} required />
+          </label>
 
-        <label>
-          Title:
-          <input type="text" name="title" placeholder='Enter movie title...'
-           value={title} onChange={e => setTitle(e.target.value)} required />
-        </label>
+          <label>
+            Year:
+            <input type="number" name="year" placeholder='Enter movie year...'
+            value={year} onChange={e => setYear(e.target.value)} min={1900} max={2030}  required />
+          </label>
+          
+          <label>
+            Image URL:
+            <input type="text" name="imgURL" placeholder='Enter movie image url...'
+            value={imgURL} onChange={e => setImgURL(e.target.value)} />
+          </label>
+          
+        { allGenres.map(g => <label key={g} >{g}
+          <input type="checkbox" name="genre" value={g} onChange={e => toggleGenres(e.target.value)} />
+        </label> )}
 
-        <label>
-          Year:
-          <input type="number" name="year" placeholder='Enter movie year...'
-           value={year} onChange={e => setYear(e.target.value)} min={1900} max={2030}  required />
-        </label>
-        
-        <label>
-          Image URL:
-          <input type="text" name="imgURL" placeholder='Enter movie image url...'
-           value={imgURL} onChange={e => setImgURL(e.target.value)} />
-        </label>
-        
-      { allGenres.map(g => <label key={g} >{g}
-        <input type="checkbox" name="genre" value={g} onChange={e => toggleGenres(e.target.value)} />
-      </label> )}
-
-        <label>
-          Rating:
-          <input type="number" name="rating" placeholder='Enter movie rating...'
-           value={rating} onChange={e => setRating(e.target.value)} min={0} max={10} required />
-        </label>
-        <button type="submit">Add a movie</button>
-      </form>
+          <label>
+            Rating:
+            <input type="number" name="rating" placeholder='Enter movie rating...'
+            value={rating} onChange={e => setRating(e.target.value)} min={0} max={10} required />
+          </label>
+          <button type="submit">Add a movie</button>
+        </form>
+      </section>
 
 
       <Main movies={movies} deleteMovie={deleteMovie} />
