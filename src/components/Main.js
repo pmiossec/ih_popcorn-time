@@ -13,7 +13,7 @@ export default function Main() {
 
     return (
         <div className="Main">
-            { movies.map(m => <Movie {...m} deleteMovie={deleteMovie} /> )}
+            { movies.map(m => <Movie  key={m.id} {...m} deleteMovie={deleteMovie} /> )}
         </div>
     )
 }
