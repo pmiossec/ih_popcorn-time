@@ -10,6 +10,7 @@ import allMovies from './data/movies.json'
 function App() {
   const [movies, updateMovies ] = useState(allMovies);
   const [title, setTitle ] = useState("");
+  const [imgURL, setImgURL ] = useState("");
   const [rating, setRating ] = useState(0);
 
   const deleteMovie = id => {
@@ -24,7 +25,7 @@ function App() {
       title: title,
       year: 1972,
       genres: ["Crime", "Drama"],
-      imgURL:"https://placehold.co/300x440?text=" + title,
+      imgURL: imgURL?? "https://placehold.co/300x440?text=" + title,
       rating: rating
   };
     updateMovies([newMovie, ...movies]);
@@ -35,18 +36,26 @@ function App() {
     <div className="App">
       <Header movieCount={movies.length} />
 
+      {/* https://m.media-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg */}
+
       <form onSubmit={handleFormSubmit}>
 
         <label>
           Title:
           <input type="text" name="title" placeholder='Enter movie title...'
-           value={title} onChange={e => setTitle(e.target.value)} />
+           value={title} onChange={e => setTitle(e.target.value)} required />
         </label>
 
         <label>
+          Image URL:
+          <input type="text" name="imgURL" placeholder='Enter movie image url...'
+           value={imgURL} onChange={e => setImgURL(e.target.value)} />
+        </label>
+        
+        <label>
           Rating:
           <input type="number" name="rating" placeholder='Enter movie rating...'
-           value={rating} onChange={e => setRating(e.target.value)} min={0} max={10} />
+           value={rating} onChange={e => setRating(e.target.value)} min={0} max={10} required />
         </label>
         <button type="submit">Add a movie</button>
       </form>
